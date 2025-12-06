@@ -4,7 +4,8 @@
     --pink: #f18c8b;
     --hitam: #0a0a0a;
     --putih: #ffffff;
-    --bayangan: 0 2px 2px rgb(0 0 0 / 0.5);
+    --bayangan: 0 2px 2px rgb(0 0 0 / 0.3);
+    --smaller: .75;
 }
 
 body{
@@ -60,7 +61,18 @@ body{
     background-color: var(--putih);
 }
 
-.mynavbar {
+.hero h3{
+    color: var(--hitam);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.hero p{
+    color: var(--hitam);
+    font-size: 1.1rem;
+}
+
+/* .mynavbar {
     background-color: rgba(255, 255, 255, 0.3) !important;
     backdrop-filter: blur(4px);
 }
@@ -79,14 +91,14 @@ body{
     text-transform: uppercase;
     font-size: 2rem;
     text-align: center;
-}
+} */
 
 .home{
     min-height: 100vh;
     background-image: url(img/bg2op2.png);
     background-size: cover;
     min-height: 100vh;
-    margin-top: -6rem;
+    /* margin-top: -6rem; */
     padding-top: 15rem;
     padding-bottom: 5rem;
 }
@@ -99,15 +111,18 @@ body{
     text-shadow: var(--bayangan);
 }
 
-.hero h3{
-    color: var(--hitam);
-    font-size: 1.5rem;
-    margin-top: 1rem;
+.home h3{
+    color: var(--pink);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: var(--bayangan);
 }
 
-.hero p{
-    color: var(--hitam);
-    font-size: 1.1rem;
+.home p {
+    color: var(--pink);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: var(--bayangan);
 }
 
 .home .couple {
@@ -191,6 +206,44 @@ body{
     text-shadow: var(--bayangan);
 }
 
+.fixed-audio-player {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#playStopButton {
+    background-color: var(--putih);
+    color: var(--pink);
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: var(--bayangan);
+    transition: background-color 0.3s;
+}
+
+#playStopButton:hover {
+    background-color: var(--pink);
+    color: var(--putih);
+}
+
+.timer .timebox {
+    display: flex;
+    gap: 90px;
+}
+
+.timer .time {
+    text-align: center;
+}
+
+.timer .time h2{
+    font-size: 5rem;
+    /* font-weight: 100; */
+}
+
 /* Media Query */
 
 /* Desktop */
@@ -202,7 +255,21 @@ body{
 
 /* HP */
 @media (max-width:576px){
+    /* Pastikan font-size tetap 60% seperti pengaturan Anda */
     html{
         font-size: 60%;
     }
+    
+    /* Tambahan KODE UNTUK MENSENTRALKAN TEKS DI HP */
+    .home .container .row .col-md-8 {
+        /* Memastikan container di HP tidak memiliki offset dan berada di tengah */
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        /* Opsional: Terapkan text-align: center lagi sebagai penegasan */
+        text-align: center !important; 
+        padding-top: 40%;
+    }
+    /* Akhir KODE UNTUK MENSENTRALKAN TEKS DI HP */
 }

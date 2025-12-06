@@ -16,13 +16,40 @@
 </head>
 
 <body>
-    <section id="hero"
-        class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-black">
+    <div class="fixed-audio-player">
+        <audio id="myAudio" loop>
+            <source src="lagu/laguB.mp3" type="audio/mpeg">
+        </audio>
+        <button id="playStopButton">
+            ▶️
+        </button>
+    </div>
+
+    <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-black">
         <main>
             <h4>Kepada Bapak/Ibu/Saudara/i</h4>
             <h1>Putra & Sabna</h1>
             <p>Mengundang Anda Untuk Hadir diacara Kami</p>
+            <p id="demo"></p>
             <a href="#home" class="btn btn-lg">Buka Undangan</a>
+
+            <div class="timer w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center">
+                <div class="timebox">
+                    <div class="time">
+                        <h2 id="hari">00</h2>
+                        <p>Hari</p>
+                    </div>
+                    <!-- <div class="time">
+                        <h2 id="jam">00</h2>
+                        <p>Jam</p>
+                    </div>
+                    <div class="time">
+                        <h2 id="menit">00</h2>
+                        <p>Menit</p>
+                    </div> -->
+                </div>
+            </div>
+
         </main>
     </section>
 
@@ -53,7 +80,7 @@
     <section id="home" class="home">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10 text-center">
+                <div class="col-md-8 text-center">
                     <h2>Acara Pernikahan</h2>
                     <h3>Diselenggarakan pada 11 Januari 2026.</h3>
                     <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5175184362793!2d107.70092627499669!3d-6.94811449305206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c38b3b833aaf%3A0xfa194c3af7525217!2sMasjid%20Raya%20Al-Jabbar!5e0!3m2!1sid!2sid!4v1764942252561!5m2!1sid!2sid" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
@@ -62,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="row couple mt-5">
+            <!-- <div class="row couple mt-5">
                 <div class="col-lg-6">
                     <divc class="row">
                         <div class="col-8 text-end">
@@ -88,7 +115,7 @@
                             <p>Putra dari Bpk. Hendrik Budiman <br> dan <br> Ibu Henni Suharlani</p>
                         </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         </div>
     </section>
@@ -164,6 +191,26 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
 
+    <script>
+        const audio = document.getElementById('myAudio');
+        const button = document.getElementById('playStopButton');
+        let isPlaying = false;
+
+        // Opsional: Atur volume awal di sini jika diinginkan
+        audio.volume = 0.1;
+
+        button.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                button.innerHTML = '▶️';
+            } else {
+                audio.play();
+                button.innerHTML = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+
     <!-- <script>
         const stickytop = document.querySelector('.sticky-top');
         const offcanvas = document.querySelector('.offcanvas');
@@ -176,6 +223,29 @@
             stickytop.style.overflow = 'hidden';
         })
     </script> -->
+
+    <script>
+        const Hari = document.getElementById('hari');
+        const Jam = document.getElementById('jam');
+        const Menit = document.getElementById('menit');
+
+        const targerTanggal = new Date("January 11 2026 00:00:00").getTime();
+
+        function timer(){
+            const tanggalsaatini = new Date().getTime();
+            const jarak = targerTanggal - tanggalsaatini;
+
+            const hari = Math.floor(jarak / 1000 / 60 / 60 / 24);
+            const jam = Math.floor(jarak / 1000 / 60 / 60) % 24;
+            const menit = Math.floor(jarak / 1000 / 60) % 60;
+
+            Hari.innerHTML = hari;
+            Jam.innerHTML = jam;
+            Menit.innerHTML = menit;
+        }
+
+        setInterval(timer, 1000);
+    </script>
 </body>
 
 </html>
