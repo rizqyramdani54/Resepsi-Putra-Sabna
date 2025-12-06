@@ -1,4 +1,4 @@
-:root{
+:root {
     --hijau: #dde0a1;
     --coklat: #7f4a23;
     --pink: #f18c8b;
@@ -8,15 +8,18 @@
     --smaller: .75;
 }
 
-body{
+body {
     font-size: 1.2rem;
     font-family: 'Work-Sans', sans-serif;
     /* min-height: 4000px; */
 }
 
+.coverSection {
+    min-height: 100vh;
+    /* background-color: var(--hijau); */
+}
 
-/* BACKGROUND DENGAN GAMBAR, PASTIKAN HAPUS "background-color: var(--hijau);" */
-.hero::before{
+.coverSection::before {
     content: '';
     position: absolute;
     top: 0;
@@ -29,16 +32,34 @@ body{
     z-index: -1;
 }
 
-.hero{
+
+
+/* BACKGROUND DENGAN GAMBAR, PASTIKAN HAPUS "background-color: var(--hijau);" */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(img/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.hero {
     min-height: 100vh;
     /* background-color: var(--hijau); */
 }
 
-.hero h1, .hero h4, .hero p {
+.hero h1,
+.hero h4,
+.hero p {
     text-shadow: var(--bayangan);
 }
 
-.hero h1{
+.hero h1 {
     font-family: 'Sacramento', cursive;
     font-size: 6rem;
 }
@@ -48,7 +69,7 @@ body{
 }
 
 .hero p {
-    font-size: 1.4;
+    font-size: 1.4rem;
 }
 
 .hero a {
@@ -56,18 +77,18 @@ body{
     background-color: var(--pink);
 }
 
-.hero a:hover{
+.hero a:hover {
     color: var(--pink);
     background-color: var(--putih);
 }
 
-.hero h3{
+.hero h3 {
     color: var(--hitam);
     font-size: 1.5rem;
     margin-top: 1rem;
 }
 
-.hero p{
+.hero p {
     color: var(--hitam);
     font-size: 1.1rem;
 }
@@ -93,7 +114,7 @@ body{
     text-align: center;
 } */
 
-.home{
+.home {
     min-height: 100vh;
     background-image: url(img/bg2op2.png);
     background-size: cover;
@@ -111,7 +132,7 @@ body{
     text-shadow: var(--bayangan);
 }
 
-.home h3{
+.home h3 {
     color: var(--coklat);
     font-size: 2.5rem;
     font-weight: bold;
@@ -126,7 +147,7 @@ body{
 }
 
 .home .couple {
-    margin-top:  100px;
+    margin-top: 100px;
 }
 
 .home .couple h3 {
@@ -135,7 +156,7 @@ body{
     color: var(--pink);
 }
 
-.home .couple img{
+.home .couple img {
     width: 100%;
 }
 
@@ -167,7 +188,7 @@ body{
     background-color: var(--pink);
 }
 
-.info a:hover{
+.info a:hover {
     color: var(--pink);
     background-color: var(--putih);
 }
@@ -200,14 +221,14 @@ body{
     text-shadow: var(--bayangan);
 }
 
-.text-terimaksih{
+.text-terimaksih {
     color: var(--putih);
     font-size: 2rem;
     text-shadow: var(--bayangan);
 }
 
 .fixed-audio-player {
-    position: fixed; 
+    position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
@@ -239,27 +260,62 @@ body{
     text-align: center;
 }
 
-.timer .time h2{
+.timer .time h2 {
     font-size: 5rem;
     /* font-weight: 100; */
 }
 
+body.no-scroll {
+    /* Mencegah scrolling vertikal dan horizontal */
+    overflow: hidden;
+    /* Ini penting untuk memastikan tampilan cover selalu mengisi penuh layar */
+    height: 100vh;
+}
+
+/* Pastikan coverSection mengisi penuh layar */
+#coverSection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    /* Pastikan dia berada di atas semua konten */
+    /* Pastikan juga konten coverSection berada di tengah, seperti Hero/Cover */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.openButton{
+    color: var(--putih);
+    background-color: var(--pink);
+}
+
+.openButton:hover{
+    color: var(--pink);
+    background-color: var(--putih);
+}
+
+
 /* Media Query */
 
 /* Desktop */
-@media (max-width:992px){
-    html{
+@media (max-width:992px) {
+    html {
         font-size: 75%;
     }
 }
 
 /* HP */
-@media (max-width:576px){
+@media (max-width:576px) {
+
     /* Pastikan font-size tetap 60% seperti pengaturan Anda */
-    html{
+    html {
         font-size: 60%;
     }
-    
+
     /* Tambahan KODE UNTUK MENSENTRALKAN TEKS DI HP */
     .home .container .row .col-md-8 {
         /* Memastikan container di HP tidak memiliki offset dan berada di tengah */
@@ -268,8 +324,9 @@ body{
         margin-left: auto;
         margin-right: auto;
         /* Opsional: Terapkan text-align: center lagi sebagai penegasan */
-        text-align: center !important; 
+        text-align: center !important;
         padding-top: 40%;
     }
+
     /* Akhir KODE UNTUK MENSENTRALKAN TEKS DI HP */
 }

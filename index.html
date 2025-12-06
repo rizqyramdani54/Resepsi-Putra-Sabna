@@ -15,22 +15,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="fixed-audio-player">
-        <audio id="myAudio" loop>
+<bod class="no-scroll">
+
+    <!-- <div class="fixed-audio-player">
+        <audio id="myAudio" loop autoplay>
             <source src="lagu/laguB.mp3" type="audio/mpeg">
         </audio>
         <button id="playStopButton">
             ▶️
         </button>
+    </div> -->
+    <div id="coverSection" class="coverSection" style="overflow: hidden;">
+        <h1>Kartu Undangan</h1>
+        <p>Ketuk tombol di bawah untuk membuka undangan.</p>
+        <a href="#" id="openButton" class="openButton btn btn-lg">Buka Undangan</a>
     </div>
 
-    <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-black">
+    <audio id="backgroundMusic" src="lagu/laguB.mp3" loop></audio>
+
+    <section id="hero"
+        class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-black">
         <main>
             <h4>Kepada Bapak/Ibu/Saudara/i</h4>
             <h1>Putra & Sabna</h1>
             <p>Mengundang Anda Untuk Hadir diacara Kami</p>
-            <p id="demo"></p>
             <a href="#home" class="btn btn-lg">Buka Undangan</a>
 
             <div class="timer w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center">
@@ -211,6 +219,49 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const openButton = document.getElementById('openButton');
+            const coverSection = document.getElementById('coverSection');
+            const mainContent = document.getElementById('mainContent');
+            const audio = document.getElementById('backgroundMusic');
+            // Ambil elemen body
+            const body = document.body;
+
+            // Tambahkan event listener ke tombol "Buka"
+            openButton.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // --- FUNGSI 1: Memutar Audio ---
+                // ... kode play audio Anda ...
+                const playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Musik berhasil diputar!');
+                    }).catch(error => {
+                        console.error('Gagal memutar musik setelah interaksi:', error);
+                    });
+                }
+
+                // --- FUNGSI 2: Transisi dan Mengizinkan Scroll ---
+
+                // 1. Izinkan Scrolling! (Menghapus class 'no-scroll')
+                body.classList.remove('no-scroll');
+
+                // 2. Sembunyikan bagian sampul (gunakan display: none untuk menghilangkannya sepenuhnya)
+                coverSection.style.display = 'none';
+
+                // 3. Tampilkan konten utama
+                // Pastikan konten utama Anda tidak disembunyikan oleh coverSection.
+                // mainContent.style.display = 'block'; // Jika Anda menggunakan div pembungkus mainContent
+
+                // Opsional: Scroll ke atas 
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+
     <!-- <script>
         const stickytop = document.querySelector('.sticky-top');
         const offcanvas = document.querySelector('.offcanvas');
@@ -231,7 +282,7 @@
 
         const targerTanggal = new Date("January 11 2026 00:00:00").getTime();
 
-        function timer(){
+        function timer() {
             const tanggalsaatini = new Date().getTime();
             const jarak = targerTanggal - tanggalsaatini;
 
@@ -246,6 +297,6 @@
 
         setInterval(timer, 1000);
     </script>
-</body>
+    </body>
 
 </html>
