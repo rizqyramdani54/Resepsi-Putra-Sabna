@@ -24,7 +24,7 @@ const Hari = document.getElementById('hari');
 const Jam = document.getElementById('jam');
 const Menit = document.getElementById('menit');
 
-const targerTanggal = new Date("January 11 2026 00:00:00").getTime();
+const targerTanggal = new Date("January 7 2026 00:00:00").getTime();
 
 function timer() {
     const tanggalsaatini = new Date().getTime();
