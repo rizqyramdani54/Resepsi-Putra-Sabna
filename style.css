@@ -180,6 +180,7 @@ body {
 }
 
 .info .alamat {
+    padding-top: 1rem;
     font-size: 1.1rem;
 }
 
@@ -205,11 +206,42 @@ body {
     letter-spacing: 0.4rem;
 }
 
+.rsvp{
+    min-height: 100vh;
+    background-color: var(--hitam);
+    color: white;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.rsvp h2 {
+    color: var(--pink);
+    font-family: 'Sacramento', cursive;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.rsvp p{
+    color: var(--putih);
+}
+
+.rsvp button{
+    background-color: var(--pink);
+    color: white;
+    border: 1px solid var(--pink);
+}
+
+.rsvp button:hover {
+    background-color: white;
+    color: var(--pink);
+    border: 1px solid white;
+}
+
 .gift {
     min-height: 100vh;
     background-color: var(--pink);
     color: white;
-    padding-top: 10rem;
+    padding-top: 10rem; 
     padding-bottom: 10rem;
 }
 
@@ -283,12 +315,12 @@ body.no-scroll {
     align-items: center;
 }
 
-.openButton{
+.openButton {
     color: var(--putih);
     background-color: var(--pink);
 }
 
-.openButton:hover{
+.openButton:hover {
     color: var(--pink);
     background-color: var(--putih);
 }
